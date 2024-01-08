@@ -1,54 +1,81 @@
-import WebsiteScreen from '@/lib/components/website-screen';
-import { COURSE_WELCOME_TEXT } from '@/lib/config';
-import Image from 'next/image';
-import Link from 'next/link';
+'use client'
 
-export default function Home() {
+import React, { useState, useEffect } from "react";
+import "../globals.css";
+
+
+const BrownBearPage = () => {
+  const [iframeSrc, setIframeSrc] = useState("");
+  const [showText, setShowText] = useState(true);
+  const [backgroundColor, setBackgroundColor] = useState("hwb(221 16% 0%)");
+
+  useEffect(() => {
+    // Load iframe content dynamically after the initial render
+    setIframeSrc("https://en.wikipedia.org/wiki/HTML_element#Frames");
+  }, []);
+
+  const toggleText = () => {
+    setShowText(!showText);
+  };
+
+  const changeBackgroundColor = () => {
+    // You can change the color as per your requirement
+    setBackgroundColor(showText ? "hwb(50 80% 70%)" : "hwb(221 16% 0%)");
+  };
+
   return (
-    <WebsiteScreen>
-      <div className="grid">
-        <div className="center padding-2 text-xl">
-          <span>
-            {COURSE_WELCOME_TEXT}
-          </span>
-        </div>
-        <div className="center padding-2">
-          <Image
-            src="/huji.png"
-            alt="HUJI Logo"
-            width={320}
-            height={100}
-            priority
-          />
-        </div>
-        <div className="center padding-2">
-          <Image
-            src="/bezalel.png"
-            alt="Bezalel Logo"
-            className="item"
-            width={320}
-            height={100}
-            priority
-          />
-        </div>
-        <div>
-          <h1 className="center text-xxxl">
-            Lorem Ipsum
-          </h1>
+    <div style={{ backgroundColor }}>
+      <div>
+        <h1>About Me</h1>
+        {showText && (
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus sit amet nunc nec vehicula. Fusce ornare nec nulla non imperdiet. Fusce vel sodales justo. Sed efficitur arcu lorem, at iaculis odio ultricies et. Duis rutrum urna nec elit bibendum, sed hendrerit nulla posuere. Vestibulum vestibulum, ante non tincidunt posuere, dui arcu lacinia nisl, nec rhoncus massa arcu ac ipsum. Nam congue interdum tortor, eu dignissim massa scelerisque vitae. Sed ultricies bibendum congue. Praesent non magna id ligula maximus luctus. Donec vitae nibh quis neque luctus sagittis et eget nunc. Aliquam id ullamcorper lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur tempor quis dolor a lacinia.
+            My name is Michael Asulin and I am a CS student in the{" "}
+            <strong>Hebrew University!</strong>
+            <br />
+            <br />
+            Now I'll give you a <strong>list</strong> of things you maybe didn't know about me:
           </p>
+        )}
+        {showText && (
           <ul>
-            <li>Aliquam maximus tellus sed lacus venenatis, ac cursus eros mollis.</li>
-            <li>In id ante sed sem pharetra molestie et vitae arcu.</li>
-            <li>Cras pharetra turpis at pretium elementum.</li>
-            <li>Donec ultrices felis vel lectus auctor iaculis.</li>
+            <li>It is my first website!</li>
+            <li>It is the first list on my website!</li>
+            <li>
+              I have a video on YouTube where I do parkour, and you can see it if you click{" "}
+              <em>
+                <a href="https://www.youtube.com/watch?v=NJVgryw5XvI&pp=ygUObW3VsaW4%3D">here</a>
+              </em>
+            </li>
           </ul>
-          <p>
-            See our <Link target="_blank" href="https://github.com/digital-product-jam-2024/course/tree/main/reference">Reference Material</Link> on <Link target="_blank" href="https://github.com/digital-product-jam-2024/course/blob/main/reference/html.md">HTML</Link>, <Link target="_blank" href="https://github.com/digital-product-jam-2024/course/blob/main/reference/css.md">CSS</Link>, and <Link target="_blank" href="https://github.com/digital-product-jam-2024/course/blob/main/reference/javascript.md">JavaScript</Link>.
-          </p>
-        </div>
+        )}
       </div>
-    </WebsiteScreen>
-  )
+      <div>
+        <br />
+        <br />
+        <p>
+          Since it is my first web page, I'll give you below a window to some random website:
+          <br />
+          <iframe src={iframeSrc} width="700" height="500"></iframe>
+        </p>
+      </div>
+      <div>
+        <h1>SUMMARY</h1>
+        {showText && (
+          <p>
+            It was a lovely exercise, so here is an image of a bear:
+            <br />
+            <img src="https://content.codecademy.com/courses/web-101/web101-image_brownbear.jpg" alt="A Brown Bear" />
+          </p>
+        )}
+      </div>
+      <div>
+        <button onClick={toggleText}>Toggle Text</button>
+        <button onClick={changeBackgroundColor}>Change Background Color</button>
+      </div>
+    </div>
+  );
 }
+
+export default BrownBearPage;
+
+
