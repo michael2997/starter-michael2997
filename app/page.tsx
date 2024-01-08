@@ -33,7 +33,7 @@ const BrownBearPage = () => {
             <strong>Hebrew University!</strong>
             <br />
             <br />
-            Now I'll give you a <strong>list</strong> of things you maybe didn't know about me:
+            Now I will give you a <strong>list</strong> of things you maybe did not know about me:
           </p>
         )}
         {showText && (
@@ -53,7 +53,7 @@ const BrownBearPage = () => {
         <br />
         <br />
         <p>
-          Since it is my first web page, I'll give you below a window to some random website:
+          Since it is my first web page, I will give you below a window to some random website:
           <br />
           <iframe src={iframeSrc} width="700" height="500"></iframe>
         </p>
